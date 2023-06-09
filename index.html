@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tags especiais</title>
+    </head>
+<body>
+    <meter></meter>
+    <progress id="progress" max="100" min="0" value="0"></progress>
+    <script>
+        var progress = document.getElementById('progress');
+        const interval = setInterval(() => {
+            progress.value += 10;
+            if (progress.value >= 100){
+                alert('Carregamento efetuado com sucesso!')
+                clearInterval (interval)
+            }
+        }, 1000)
+        </script> <br><p></p>
+
+        <!--M   ark e JS-->
+
+        <input type="text" id="busca"> <br>
+        <p id="descrição"> Atuo na área de infraestrutura de TI e atualmente entrando no mundo do desenvolvimento Front-end. 
+        </p>
+        <script>
+            var searchField = document.getElementById('busca');
+            var descriptionObject = document.getElementById('descrição');
+            var textToSearch = descriptionObject.innerHTML;
+
+            function realizaBusca(busca) {
+                const regex = new RegExp (`(${busca})(?!(.(?!<mark))*</mark>)+`, 'ig');
+                const ocurrences = textToSearch.match(regex);
+                descriptionObject.innerHTML = textToSearch.replace(regex, `<mark>${busca}</mark>`)
+            }
+            searchField.addEventListener('keyup', (e)=> realizaBusca(e.target.value));
+        </script>
+
+</body>
+</html>
